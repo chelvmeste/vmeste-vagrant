@@ -10,7 +10,7 @@ vagrantfile-local:
         network:
             private_network: 192.168.56.132
             forwarded_port:
-                QvLw2wyumLQb:
+                0NenY42RQ2Th:
                     host: '5276'
                     guest: '22'
         post_up_message: ''
@@ -32,7 +32,9 @@ vagrantfile-local:
                     - '--hiera_config /vagrant/puphpet/puppet/hiera.yaml'
                     - '--parser future'
         synced_folder:
-            qDI617Ky45HT:
+            ASnizpzqns9A:
+                owner: ''
+                group: ''
                 source: ./
                 target: /var/www
                 sync_type: default
@@ -66,7 +68,7 @@ firewall:
     install: '1'
     rules: null
 apache:
-    install: 0
+    install: '0'
     settings:
         user: www-data
         group: www-data
@@ -77,7 +79,7 @@ apache:
     modules:
         - rewrite
     vhosts:
-        uxYRQbpqHJwx:
+        qtsVXmeNmJsa:
             servername: awesome.dev
             serveraliases:
                 - www.awesome.dev
@@ -104,8 +106,10 @@ nginx:
         default_vhost: 1
         proxy_buffer_size: 128k
         proxy_buffers: '4 256k'
+    upstreams: {  }
     vhosts:
-        Iq0pmBsxuioe:
+        pteiFjFYPBjr:
+            proxy: ''
             server_name: vmeste.dev
             server_aliases:
                 - www.vmeste.dev
@@ -115,6 +119,7 @@ nginx:
             index_files:
                 - index.php
             engine: php
+            client_max_body_size: 1m
             ssl_cert: ''
             ssl_key: ''
 php:
@@ -125,11 +130,11 @@ php:
     modules:
         php:
             - cli
+            - curl
+            - gd
+            - imagick
             - intl
             - mcrypt
-            - imagick
-            - gd
-            - curl
             - memcached
         pear: {  }
         pecl:
@@ -167,13 +172,16 @@ xdebug:
         xdebug.remote_port: '9000'
 xhprof:
     install: '0'
+wpcli:
+    install: '0'
+    version: ''
 drush:
     install: '0'
     version: 6.3.0
 ruby:
     install: '1'
     versions:
-        6nwcsSki1i84:
+        Dghtss3cPNfc:
             version: ''
 nodejs:
     install: '0'
@@ -182,14 +190,15 @@ python:
     install: '1'
     packages: {  }
     versions:
-        JdsPe3SO28Kf:
+        7F5ZqURDLFN8:
             version: ''
 mysql:
     install: '1'
+    override_options: {  }
     root_password: '123'
     adminer: '1'
     databases:
-        Jzve0ulwHYB4:
+        XJgchhzRXrRx:
             grant:
                 - ALL
             name: vmeste
@@ -208,6 +217,7 @@ postgresql:
     adminer: 0
 mariadb:
     install: '0'
+    override_options: {  }
     root_password: '123'
     adminer: 0
     databases: {  }
@@ -254,6 +264,11 @@ rabbitmq:
 elastic_search:
     install: '1'
     settings:
+        version: '1.3.0'
         java_install: true
-        autoupgrade: true
+solr:
+    install: '0'
+    settings:
+        version: ''
+        port: ''
 
